@@ -22,8 +22,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 
 /**
@@ -175,6 +174,50 @@ class EmployeeServiceImplTest {
         // then - verify the output
 
         assertEquals("Not a valid Employee", thrown.getMessage());
+
+    }
+
+    //Junit Test for updateEmployee Operation
+    @Test
+    public void givenEmployeeObject_whenUpdateEmployee_thenReturnUpdatedEmployee(){
+
+        // given - preconditions or setup
+
+        BDDMockito.given(employeeRepository.save(employee1)).willReturn(employee1);
+
+        //update Employee Object
+        employee1.setEmail("newCool@gmail.com");
+        employee1.setFirstName("Clark");
+
+        // when - action or the behaviour that we are going to test
+
+        Employee updatedEmployee = employeeService.UpdateEmployee(employee1);
+
+        // then - verify the output
+
+        assertEquals("newCool@gmail.com", updatedEmployee.getEmail());
+        assertEquals("Clark", updatedEmployee.getFirstName());
+
+    }
+
+    //Junit Test for delete Employee Operation
+    @Test
+    public void givenEmployeeId_whenDeleteEmployee_thenDelete(){
+
+        // given - preconditions or setup
+
+        //stubbing function calls that return nothing
+        BDDMockito.willDoNothing().given(employeeRepository).deleteById(employee1.getEmployeeId());
+
+        // when - action or the behaviour that we are going to test
+        employeeRepository.deleteById(employee1.getEmployeeId());
+
+        // then - verify that the method is called at least once
+
+        verify(employeeRepository).deleteById(employee1.getEmployeeId());
+
+        //verify that a function is called exactly once
+        verify(employeeRepository, times(1)).deleteById(employee1.getEmployeeId());
 
     }
 }

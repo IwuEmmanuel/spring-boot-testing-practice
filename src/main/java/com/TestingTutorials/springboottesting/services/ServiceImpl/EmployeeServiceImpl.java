@@ -47,4 +47,14 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         throw new ResourceNotFoundException("Not a valid Employee");
     }
+
+    @Override
+    public Employee UpdateEmployee(Employee updatedEmployee) {
+        return employeeRepository.save(updatedEmployee);
+    }
+
+    @Override
+    public void deleteEmployee(Long id) {
+        employeeRepository.deleteById(id);
+    }
 }

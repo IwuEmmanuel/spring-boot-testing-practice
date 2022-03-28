@@ -3,8 +3,6 @@ package com.TestingTutorials.springboottesting.IntegrationTests;
 
 import com.TestingTutorials.springboottesting.Data.Entities.Employee;
 import com.TestingTutorials.springboottesting.Data.Repositories.EmployeeRepository;
-import com.TestingTutorials.springboottesting.exceptions.ResourceNotFoundException;
-import com.TestingTutorials.springboottesting.services.EmployeeService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.BeforeAll;

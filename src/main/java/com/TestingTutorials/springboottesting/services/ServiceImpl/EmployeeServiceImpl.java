@@ -42,10 +42,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         Optional<Employee> savedEmployee = employeeRepository.findById(employeeId);
 
-        if (savedEmployee.isPresent()){
-            return employeeRepository.findById(employeeId);
-        }
-        throw new ResourceNotFoundException("Not a valid Employee");
+        return savedEmployee;
     }
 
     @Override

@@ -61,10 +61,6 @@ public class EmployeeControllerITest {
     @Autowired
     private ObjectMapper objectMapper;
 
-//    private static Employee employee;
-//    private static Employee employee1;
-//    private static Employee employee2;
-//    static List<Employee> listOfEmployees = new ArrayList<>();
 
     private Employee employee;
     private Employee employee1;
